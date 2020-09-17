@@ -1,0 +1,16 @@
+@import './styles/variables';
+body{
+    background-color: #e7e393;
+}
+.wrapper{
+    margin: auto;
+    max-width: 1400px;
+    overflow:visible;
+    
+    .navcolor{
+        background-color: $color2;
+        width: 100%;
+        height: 50px;
+       z-index: -1;
+    }
+}
