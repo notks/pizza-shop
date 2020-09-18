@@ -1,25 +1,23 @@
 import React from 'react'
 import './Navbar.scss'
-import SearchIcon from '../../static/SearchIcon.svg'
-import LogIn from '../../static/log-in.svg'
-import Cart from '../../static/supermarketdark.svg'
+
 export default function Navbar() {
     return (
             <header>
                 <div className='search-box'>
                     <input type="text" placeholder='Search for products' name="search"></input>
                    
-                         <img src={SearchIcon} alt="search icon"></img> 
+                         <img src='/img/SearchIcon.svg' alt="search icon"></img> 
                 
                    
                 </div>
                 <div className='cart-login'>
                     <button className='cart-btn'>
-                    <img className='cart-icon' src={Cart} alt='Cart-icon'></img>
+                    <img className='cart-icon' src='/img/supermarketlight.svg' alt='Cart-icon'></img>
 
                     </button>
                     <button className='login-btn'>
-                    <img className='login-icon' src={LogIn} alt="Login-icon"></img>                    
+                    <img className='login-icon' src='/img/log-in.svg' alt="Login-icon"></img>                    
 
                     </button>
                 </div>

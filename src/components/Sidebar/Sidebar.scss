@@ -1,6 +1,15 @@
+@import '../../styles/variables';
 .sidebar{
     margin-top:30px ;
     width: 250px;
  height: 100vh;
-    background-color: yellow;
+ background-color: $color4  ;
+    .cart{
+        .shopping-cart-sidebar{
+           margin: 10px 0px 0px 70px;   
+            width: 100px;
+            height: 100px;
+
+        }
+    }
 }
