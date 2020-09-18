@@ -11,7 +11,7 @@ export default function Item(props) {
     <p>{props.item.ingreadiants}</p>
     <p>{props.item.name}</p>
          <h1>{props.item.price}</h1>
-         <button onClick={()=>{props.setc([...props.count,props.item])}}>add to cart</button>
+         <button onClick={()=>{props.item.q=3 ;props.setc([...props.count,props.item])}}>add to cart</button>
        </div>
          
         

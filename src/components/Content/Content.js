@@ -46,7 +46,7 @@ image:'/img/pizza1.png'
 
             </div>
             <div className='sidebar'>
-  <Sidebar count={count}></Sidebar>
+  <Sidebar setcart={setcount} cart={count}></Sidebar>
             </div>
                     
                   

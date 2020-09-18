@@ -1,0 +1,14 @@
+.cart-component{
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 5px 0px;
+    input{
+        width: 30px;
+    }
+    .cart-product-image{
+        height: 50px;
+        width: 50px;
+    }
+}
