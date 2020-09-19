@@ -2,47 +2,36 @@ import React from 'react'
 import './Content.scss'
 import Item from '../Item/Item'
 import Sidebar from '../Sidebar/Sidebar'
-import { useState } from 'react'
-
-export default function Content() {
+import { useState,useEffect } from 'react'
+import axios from 'axios'
+export default  function Content() {
+    const url='http://127.0.0.1:8000/products'
     const [count, setcount] = useState([])
-    const items=[{
-name:'pizza1',
-ingreadiants:'ingreadiants1',
-price:10,
-image:'/img/pizza1.png'
-    },
-    {
-        name:'pizza2',
-        ingreadiants:'ingreadiants2dasdddddddddddddddddddddddddddddddddddddddddddddddddddd',
-        price:10,
-        image:'/img/pizza4.png'
-            },
-            {
-                name:'pizza3',
-                ingreadiants:'ingreadiants3',
-                price:20,
-                image:'/img/pizza3.png'
-                    },
-]
+    const [items, setitems] = useState([])
+    useEffect(() => {
+        console.log('fetching')
+  
+        fetch(url)
+        .then(response =>response.json())
+        .then(json =>{setitems(json)} )
+  
+   },[])
+    
+    
     return (
         <div className='content'>
             <div className='items'>
-  {
-      items.map(item=>{
-          return( 
-            <Item 
-            count={count}
-            setc={setcount}
-          item={item}
-            ></Item> 
-          
-          
-          )
-      })
-  }
+            {
+                items.map(item=>{
+                   return( <Item
+                    item={item}
+                    setc={setcount}
+                    count={count}
+                    ></Item>
+                   )
+                })
+            }
                  
-               
 
             </div>
             <div className='sidebar'>

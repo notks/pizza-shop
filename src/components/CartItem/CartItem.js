@@ -2,7 +2,8 @@ import React from 'react'
 import './CartItem.scss'
 export default function CartItem(props) {
     const handleQuantitychange=(event)=>{
-        //not workin rn
+          const newCart=[...props.cart]
+       // newCart.filter(())
         props.setcart({...props.item,q:event.target.value})
     }
     return (
