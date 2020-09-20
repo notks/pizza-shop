@@ -3,10 +3,9 @@ import './Content.scss'
 import Item from '../Item/Item'
 import Sidebar from '../Sidebar/Sidebar'
 import { useState,useEffect } from 'react'
-import axios from 'axios'
 export default  function Content() {
     const url='http://127.0.0.1:8000/products'
-    const [count, setcount] = useState([])
+    const [cart, setcart] = useState([])
     const [items, setitems] = useState([])
     useEffect(() => {
         console.log('fetching')
@@ -17,6 +16,25 @@ export default  function Content() {
   
    },[])
     
+const addToCart=(item)=>{
+    const newCart=[...cart]
+    let found=false
+    newCart.forEach((cartItem)=>{
+        if(cartItem.id===item.id){
+            cartItem.q++
+            found=true
+        }
+
+    })
+    if(found===false){
+        item.q=1
+newCart.push(item)
+    }
+    
+
+    
+setcart(newCart)
+}
     
     return (
         <div className='content'>
@@ -24,9 +42,11 @@ export default  function Content() {
             {
                 items.map(item=>{
                    return( <Item
+                   key={item.id}
+                   addToCart={addToCart}
                     item={item}
-                    setc={setcount}
-                    count={count}
+                    setcart={setcart}
+                    cart={cart}
                     ></Item>
                    )
                 })
@@ -35,7 +55,7 @@ export default  function Content() {
 
             </div>
             <div className='sidebar'>
-  <Sidebar setcart={setcount} cart={count}></Sidebar>
+  <Sidebar setcart={setcart} cart={cart}></Sidebar>
             </div>
                     
                   

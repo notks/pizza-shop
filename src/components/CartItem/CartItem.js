@@ -1,17 +1,14 @@
 import React from 'react'
 import './CartItem.scss'
-export default function CartItem(props) {
-    const handleQuantitychange=(event)=>{
-          const newCart=[...props.cart]
-       // newCart.filter(())
-        props.setcart({...props.item,q:event.target.value})
-    }
+export default function CartItem({item,setcart,cart,qChange,removeItem}) {
+    
     return (
         <div className='cart-component'>
-            <img src={props.item.image} alt='product-image' className='cart-product-image'></img>
-    <p>{props.item.name}</p>
-    <input type='number' defaultValue={props.item.q} ></input>
-    <p>{props.item.price}$</p>
+            <img src={item.image} alt='product-image' className='cart-product-image'></img>
+    <p>{item.name}</p>
+    <input type='number' value={item.q} min='1' onChange={(e)=>qChange(e,item)} ></input>
+    <p>{item.price}$</p>
+    <button onClick={()=>{removeItem(item.id)}}>Remove item</button>
         </div>
     )
 }
