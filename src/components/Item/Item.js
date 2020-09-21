@@ -6,7 +6,7 @@ export default function Item({addToCart,item}) {
         
         <div className='container'>
         
-        <img src={item.image}></img>
+        <img src={item.image} alt='item'></img>
        <div>
     <p>{item.ingreadiants}</p>
     <p>{item.name}</p>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Sidebar.scss";
 import CartItem from "../CartItem/CartItem";
-import { BrowserRouter as Router, Route, NavLink ,Link,Redirect} from 'react-router-dom'
 
 export default function Sidebar({ cart, setcart }) {
   const [price, setprice] = useState(0);
