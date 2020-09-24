@@ -1,14 +1,26 @@
-.cart-component{
-    border: 1px solid black;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 5px 0px;
-    input{
-        width: 30px;
-    }
-    .cart-product-image{
-        height: 50px;
-        width: 50px;
-    }
+.cart-component {
+    margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 5px 0px;
+  width:100%;
+      background-color: white;
+  border-radius: 20px;
+  input {
+      border-radius: 10px;
+      
+    width: 50px;
+  }
+  .cart-product-image {
+    border-radius: 20px;
+    height: 50px;
+    width: 50px;
+  }
+  button {
+    border-radius: 20px;
+    background-color: #b63f3f;
+    color: white;
+    border: none;
+  }
 }

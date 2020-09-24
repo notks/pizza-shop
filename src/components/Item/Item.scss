@@ -7,10 +7,13 @@
     width: 300px;
     
 height: 500px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+border-radius:20px;
 
 
-background-color: $color4;
+background-color: white;
 img{
+    border-radius: 20px 20px 0px 0px ;
     margin: 0px;
     width: 300px;
     height: 200px;
@@ -22,14 +25,24 @@ div{
 margin: 0;
     display: flex;
     flex-direction:column;
-    justify-content:flex-end;
+    justify-content: space-between;
     align-items: center;
     background-color: white;
     color: $color5;
+    border-radius: 20px;
     p{ text-align: center;
         width: 150px;
         word-wrap: break-word;
     margin: 0px;    
+    }
+    div{
+        p{
+            margin-top: 10px;
+            text-align: center;
+        width: 150px;
+        word-wrap: break-word;
+    margin: 0px;   
+        }
     }
     h1{
         text-align: center;
@@ -37,7 +50,7 @@ margin: 0;
         margin-top: 10px;
     }
     button{
-        height: 30px;
+        height: 100px;
         width: 200px;
         border-radius: 30px;
         outline: none;

@@ -1,8 +1,18 @@
 @import './styles/variables';
 body{
-    background-color: $color4   ;
+    background-color: white   ;
+    
+}
+.navfill{
+    position: absolute;
+    height: 70px;
+float: left;
+width: 100%;
+z-index: -1000;
+background-color: #424842dd;
 }
 .wrapper{
+    z-index: 2;
     margin: auto;
     max-width: 1400px;
     overflow:visible;

@@ -12,6 +12,7 @@ export default function Navbar() {
                    
                 </div>
                 <div className='cart-login'>
+                 
                     <button className='cart-btn'>
                     <img className='cart-icon' src='/img/supermarketlight.svg' alt='Cart-icon'></img>
 

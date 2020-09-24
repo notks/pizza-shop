@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import {Link} from 'react-router-dom'
+
 import "./Sidebar.scss";
 import CartItem from "../CartItem/CartItem";
 
@@ -17,39 +19,13 @@ export default function Sidebar({ cart, setcart }) {
     setprice(newPrice);
   }, [cart]);
 
-  const handleQuantitychange = (event, item) => {
-    const newCart = [...cart];
-    newCart.forEach((cartItem) => {
-      if (item.id === cartItem.id) {
-        item.q = parseInt(event.target.value);
-      }
-    });
-    setcart(newCart);
-  };
-  const removeCartItem = (itemId) => {
-    let newCart = [...cart];
-    let found = false;
-    newCart.forEach((item) => {
-      if (item.id === itemId) {
-        if (item.q > 1) {
-          item.q--;
-          found = true;
-        }
-      }
-    });
-    if (found === false) {
-      newCart = cart.filter((item) => item.id !== itemId);
-    }
-
-    setcart(newCart);
-  };
-  const redirectPage=()=>{
-      document.location.href='/order'
-  }
+  
+  
   return (
       
     <div className="sidebar">
       <div className="cart">
+
         <img
           src="/img/supermarketlight.svg"
           className="shopping-cart-sidebar"
@@ -61,8 +37,7 @@ export default function Sidebar({ cart, setcart }) {
         return (
           <CartItem
             key={item.id}
-            removeItem={removeCartItem}
-            qChange={handleQuantitychange}
+            
             setcart={setcart}
             item={item}
             cart={cart}
@@ -73,13 +48,15 @@ export default function Sidebar({ cart, setcart }) {
       </div>
       
       <div className="price">
-        {price>0 && price+'$'}<br></br>
-        {cartcount.current>0 && cartcount.current}
+        {price>0 && 'Total: '+price+'$'}<br></br>
+        {cartcount.current>0 && 'Total quantity: '+cartcount.current}
       </div>
       <div className='order'>
+        
           {
-             cartcount.current>0 && <button onClick={()=>redirectPage()}>Order</button>
+             cartcount.current>0 &&  <Link to='/order'><button className='orderbtn'>&#10004;</button></Link>
           }
+          {cartcount.current>0 && <button className='clear' onClick={()=>{setcart([]); localStorage.clear()}}>X</button>}
 
       </div>
     </div>
