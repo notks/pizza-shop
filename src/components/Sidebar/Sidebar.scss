@@ -33,9 +33,7 @@ flex-direction: column;
       display: none;
     }
   }
-  .price{
-   
-  }
+  
   .order{
     display: flex;
     
@@ -47,6 +45,12 @@ flex-direction: column;
       background-color: $color2;
       border: none;
       border-radius: 20px;
+      outline: none;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      &:active{
+        box-shadow: none;
+    }
+
     }
     .clear{
       border: none;
@@ -54,6 +58,12 @@ flex-direction: column;
           height: 50px;
 width: 100px;
 background-color:$color2;
+outline: none;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+&:active{
+  box-shadow: none;
+}
+
     }
     
   }

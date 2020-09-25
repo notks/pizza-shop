@@ -1,19 +1,44 @@
-import React ,{useRef} from 'react'
-import Sidebar from '../Sidebar/Sidebar'
-import './Order.scss'
-export default function Order({cart,setcart}) {
-const cartItems = useRef([])
-       
+import React, { useState, useEffect } from "react";
+import "./Order.scss";
 
-          const newCart=JSON.parse(localStorage.getItem('cart'))
-    cartItems.current=newCart
+export default function Order() {
+  return (
+    <div className="address-form">
+      <form action="http://127.0.0.1:8000/api/orders" method="POST">
+        <input
+          type="text"
+          className="name-input"
+          name="name"
+          placeholder="Name"
+        />
+        <input
+          type="text"
+          className="surname-input"
+          name="surname"
+          placeholder="Surname"
+        />
+        <br />
 
-    return (
-        <div className='order-items'>
-            <div className='items'>
-Order info
-            </div>
-           
-        </div>
-    )
+        <input
+          type="text"
+          className="address-input"
+          name="address"
+          placeholder="Address"
+        />
+        <br />
+        <input
+          type="text"
+          className="telephone-input"
+          name="phone"
+          placeholder="Telephone"
+        />
+        <br />
+        <input type='checkbox' name='savetoaccount' defaultValue='false'></input>
+        <button>paypal</button>
+        <button>stripe</button>
+
+        <button disabled type="submit">submit</button>
+      </form>
+    </div>
+  );
 }
