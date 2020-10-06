@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Order.scss";
 
 export default function Order() {
@@ -33,11 +33,17 @@ export default function Order() {
           placeholder="Telephone"
         />
         <br />
-        <input type='checkbox' name='savetoaccount' defaultValue='false'></input>
+        <input
+          type="checkbox"
+          name="savetoaccount"
+          defaultValue="false"
+        ></input>
         <button>paypal</button>
         <button>stripe</button>
 
-        <button disabled type="submit">submit</button>
+        <button disabled type="submit">
+          submit
+        </button>
       </form>
     </div>
   );

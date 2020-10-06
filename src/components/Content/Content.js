@@ -4,9 +4,11 @@ import { Route, Switch } from "react-router-dom";
 import Items from "../Items/Items";
 import Sidebar from "../Sidebar/Sidebar";
 import Order from "../Order/Order";
+import Home from "../Home/Home";
+import Login from "../Login/Login";
 import "./Content.scss";
 import { useState, useEffect } from "react";
-export default function Content({ cart, setcart }) {
+export default function Content({ cart, setcart, auth }) {
   const url = "http://127.0.0.1:8000/api/products";
   const [items, setitems] = useState([]);
   useEffect(() => {
@@ -22,20 +24,34 @@ export default function Content({ cart, setcart }) {
       <BrowserRouter>
         <Switch>
           <>
-          <div className="content">
-            <div className="main">
-              <Route
-                path="/"
-                exact
-                render={() => (
-                  <Items cart={cart} setcart={setcart} items={items}></Items>
-                )}
-              ></Route>
-              <Route path="/order" exact render={() => <Order></Order>}></Route>
-            </div>
+            <div className="content">
+              <div className="main">
+                <Route
+                  path="/"
+                  exact
+                  render={() => (
+                    <Items cart={cart} setcart={setcart} items={items}></Items>
+                  )}
+                ></Route>
+                <Route
+                  path="/order"
+                  exact
+                  render={() => <Order></Order>}
+                ></Route>
+                <Route
+                  path="/home"
+                  exact
+                  render={() => <Home auth={auth}></Home>}
+                ></Route>
+                <Route
+                  path="/login"
+                  exact
+                  render={() => <Login auth={auth}></Login>}
+                ></Route>
+              </div>
 
-            <Sidebar setcart={setcart} cart={cart}></Sidebar>
-          </div>
+              <Sidebar setcart={setcart} cart={cart}></Sidebar>
+            </div>
           </>
         </Switch>
       </BrowserRouter>
