@@ -1,25 +1,42 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import Auth from "../../Auth";
 import "./Order.scss";
+export default function Order({ checkAuth, cart }) {
+  Auth.checkAuth();
+  const address = useRef();
+  const telephone = useRef();
 
-export default function Order() {
+  const order = {};
+  const submitOrder = (e) => {
+    e.preventDefault();
+    order.address = address.current.value;
+    order.telephone = telephone.current.value;
+    order.cart = cart;
+    console.log(order);
+    fetch("http://127.0.0.1:8000/api/user/orders", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: localStorage.getItem("Authorization"),
+      },
+      body: JSON.stringify(order),
+    })
+      .then((response) => response.json())
+      .then((data) =>{ console.log('res data');console.log(data)})
+      .catch((e) => console.log(e));
+  };
+  useEffect(() => {
+    // checkAuth()
+  }, []);
   return (
     <div className="address-form">
-      <form action="http://127.0.0.1:8000/api/orders" method="POST">
+      <form
+        onSubmit={(e) => {
+          submitOrder(e);
+        }}
+      >
         <input
-          type="text"
-          className="name-input"
-          name="name"
-          placeholder="Name"
-        />
-        <input
-          type="text"
-          className="surname-input"
-          name="surname"
-          placeholder="Surname"
-        />
-        <br />
-
-        <input
+          ref={address}
           type="text"
           className="address-input"
           name="address"
@@ -27,6 +44,7 @@ export default function Order() {
         />
         <br />
         <input
+          ref={telephone}
           type="text"
           className="telephone-input"
           name="phone"

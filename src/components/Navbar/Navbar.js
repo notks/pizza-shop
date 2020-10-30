@@ -1,10 +1,8 @@
 import React from "react";
 import "./Navbar.scss";
-import axios from "axios";
 import Auth from "../../Auth";
 //const a = new Auth();
 export default function Navbar({ auth }) {
-  const data = { email: "d@b", password: "password" };
   return (
     <header>
       <div className="search-box">
@@ -33,7 +31,7 @@ export default function Navbar({ auth }) {
           <button
             className="login-btn"
             onClick={() => {
-              Auth.login("d@b", "password");
+              Auth.login("moreilly@example.net", "password");
             }}
           >
             login

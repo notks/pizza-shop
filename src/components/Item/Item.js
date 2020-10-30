@@ -16,7 +16,7 @@ export default function Item({ cart, setcart, item }) {
     }
 
     setcart(newCart);
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(newCart));
   };
   return (
     <div className="container">
@@ -32,8 +32,7 @@ export default function Item({ cart, setcart, item }) {
             addToCart(item);
           }}
         >
-          Add to cart
-        </button>
+Add To Cart        </button>
       </div>
     </div>
   );

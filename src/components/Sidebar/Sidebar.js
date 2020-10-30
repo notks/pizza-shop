@@ -52,7 +52,7 @@ export default function Sidebar({ cart, setcart }) {
             className="clear"
             onClick={() => {
               setcart([]);
-              localStorage.clear();
+              localStorage.removeItem('cart');
             }}
           >
             X

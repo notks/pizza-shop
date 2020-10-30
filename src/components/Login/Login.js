@@ -4,10 +4,10 @@ import Auth from "../../Auth";
 export default function Login() {
   const [msg, setmsg] = useState("");
   const handleLogin = async () => {
-    let msgDiv = document.getElementById("failed-login");
+   // let msgDiv = document.getElementById("failed-login");
     let email = document.getElementById("email-input").value;
     let password = document.getElementById("password-input").value;
-    let res = Auth.login(email, password, setmsg());
+    let res = Auth.login(email, password);
     console.log(res);
   };
   return (

@@ -1,9 +1,32 @@
+//import {useHistory} from 'react-router-dom';
 const loginPath = "http://127.0.0.1:3000/login";
-const registerPath = "http://127.0.0.1:3000/register";
+//const registerPath = "http://127.0.0.1:3000/register";
 const homePath = "http://127.0.0.1:3000/home";
+//const history=useHistory();
 
-const Auth = {
-  checkAuth: () => {},
+  const Auth = {
+  checkAuth: async() => {
+    if(localStorage.getItem('AuthState')){
+      console.log('logedin')
+      await fetch("http://127.0.0.1:8000/api/authenticated", {
+        headers: {
+          Authorization: localStorage.getItem("Authorization"),
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data)
+        })
+        .catch((e) => {
+          document.location.href = "http://127.0.0.1:3000/login";
+          //history.pushState('/login')
+        });
+    }
+    else{
+      document.location.href = "http://127.0.0.1:3000/login";
+    }
+   
+  },
 
   login: (email, password) => {
     let msg = "";
@@ -21,9 +44,11 @@ const Auth = {
       .then((data) => {
         if (data.message) {
           msg = data.message;
-        }
+          console.log(msg)
+        }else{
         localStorage.setItem("Authorization", `Bearer ${data.token}`);
-        return (document.location.href = homePath);
+        localStorage.setItem('AuthState',true)
+        return (document.location.href = homePath)}
       })
       .catch((e) => console.log(e));
   },
@@ -36,7 +61,9 @@ const Auth = {
     })
       .then((data) => {
         console.log("You are logged out!");
-        localStorage.setItem("Authorization", null);
+        localStorage.removeItem("Authorization");
+        localStorage.removeItem('AuthState')
+        
         document.location.href = loginPath;
       })
       .catch((e) => {
@@ -53,5 +80,4 @@ const Auth = {
       .then((data) => console.log(data));
   },
 };
-
-module.exports = Auth;
+export default Auth
