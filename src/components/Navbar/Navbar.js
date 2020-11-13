@@ -31,7 +31,7 @@ export default function Navbar({ auth }) {
           <button
             className="login-btn"
             onClick={() => {
-              Auth.login("moreilly@example.net", "password");
+              Auth.login("dstanton@example.com", "password");
             }}
           >
             login

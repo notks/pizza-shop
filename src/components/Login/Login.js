@@ -1,23 +1,24 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Auth from "../../Auth";
 
 export default function Login() {
   const [msg, setmsg] = useState("");
   const handleLogin = async () => {
-   // let msgDiv = document.getElementById("failed-login");
+    // let msgDiv = document.getElementById("failed-login");
     let email = document.getElementById("email-input").value;
     let password = document.getElementById("password-input").value;
-    let res = Auth.login(email, password);
-    console.log(res);
+    let res = await Auth.login(email, password);
+    setmsg(res);
   };
   return (
     <div>
       <div id="failed-login">{msg}</div>
       <form
-        onSubmit={async (e) => {
+        onSubmit={(e) => {
           console.log(e);
           e.preventDefault();
-          await handleLogin();
+          handleLogin();
         }}
       >
         <input type="text" id="email-input" placeholder="email"></input>
@@ -27,7 +28,9 @@ export default function Login() {
           placeholder="password"
         ></input>
         <button type="submit">Log In</button>
-        <button>Sign Up</button>
+        <Link to="register">
+          <button>Sign Up</button>
+        </Link>
       </form>
     </div>
   );

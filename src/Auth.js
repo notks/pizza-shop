@@ -4,10 +4,10 @@ const loginPath = "http://127.0.0.1:3000/login";
 const homePath = "http://127.0.0.1:3000/home";
 //const history=useHistory();
 
-  const Auth = {
-  checkAuth: async() => {
-    if(localStorage.getItem('AuthState')){
-      console.log('logedin')
+const Auth = {
+  checkAuth: async () => {
+    if (localStorage.getItem("AuthState")) {
+      console.log("logedin");
       await fetch("http://127.0.0.1:8000/api/authenticated", {
         headers: {
           Authorization: localStorage.getItem("Authorization"),
@@ -15,22 +15,20 @@ const homePath = "http://127.0.0.1:3000/home";
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
+          console.log(data);
         })
         .catch((e) => {
           document.location.href = "http://127.0.0.1:3000/login";
           //history.pushState('/login')
         });
-    }
-    else{
+    } else {
       document.location.href = "http://127.0.0.1:3000/login";
     }
-   
   },
 
-  login: (email, password) => {
+  login: async (email, password) => {
     let msg = "";
-    fetch("http://127.0.0.1:8000/api/user/login", {
+    await fetch("http://127.0.0.1:8000/api/user/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -44,13 +42,14 @@ const homePath = "http://127.0.0.1:3000/home";
       .then((data) => {
         if (data.message) {
           msg = data.message;
-          console.log(msg)
-        }else{
-        localStorage.setItem("Authorization", `Bearer ${data.token}`);
-        localStorage.setItem('AuthState',true)
-        return (document.location.href = homePath)}
+        } else {
+          localStorage.setItem("Authorization", `Bearer ${data.token}`);
+          localStorage.setItem("AuthState", true);
+          return (document.location.href = homePath);
+        }
       })
       .catch((e) => console.log(e));
+    return msg;
   },
   logout: () => {
     fetch("http://127.0.0.1:8000/api/user/logout", {
@@ -62,8 +61,8 @@ const homePath = "http://127.0.0.1:3000/home";
       .then((data) => {
         console.log("You are logged out!");
         localStorage.removeItem("Authorization");
-        localStorage.removeItem('AuthState')
-        
+        localStorage.removeItem("AuthState");
+
         document.location.href = loginPath;
       })
       .catch((e) => {
@@ -80,4 +79,4 @@ const homePath = "http://127.0.0.1:3000/home";
       .then((data) => console.log(data));
   },
 };
-export default Auth
+export default Auth;

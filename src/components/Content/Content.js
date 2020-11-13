@@ -1,34 +1,30 @@
 import React from "react";
-import { BrowserRouter, Redirect } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Route, Switch } from "react-router-dom";
 import Items from "../Items/Items";
 import Sidebar from "../Sidebar/Sidebar";
 import Order from "../Order/Order";
 import Home from "../Home/Home";
 import Login from "../Login/Login";
+import Register from "../Register/Register";
 import "./Content.scss";
-import { useState, useEffect,useRef } from "react";
+import { useState, useEffect } from "react";
 import Auth from "../../Auth";
 export default function Content({ cart, setcart, auth }) {
   const url = "http://127.0.0.1:8000/api/products";
   const [items, setitems] = useState([]);
-  const [authstate, setauthstate] = useState()
   //const authstate = useRef(false)
-  
-  
 
-  useEffect( () => {
-    
+  useEffect(() => {
     fetch(url)
       .then((response) => response.json())
       .then((json) => {
         setitems(json);
       });
-  },[]);
+  }, []);
 
   return (
     <>
-    {authstate}
       <BrowserRouter>
         <Switch>
           <>
@@ -44,25 +40,14 @@ export default function Content({ cart, setcart, auth }) {
                 <Route
                   path="/order"
                   exact
-                  render={() =>
-                  
-                    
-                      
-                    
-                      <Order cart={cart}></Order>
-                    
-                    
-                  }
+                  render={() => <Order cart={cart}></Order>}
                 ></Route>
                 <Route
-                  path="/home"
+                  path="/register"
                   exact
-                  render={() =>
-                   
-                      <Home></Home>
-              
-                  }
+                  render={() => <Register></Register>}
                 ></Route>
+                <Route path="/home" exact render={() => <Home></Home>}></Route>
                 <Route
                   path="/login"
                   exact
