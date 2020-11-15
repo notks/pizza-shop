@@ -2,11 +2,11 @@ import React, { useEffect, useState, useRef } from "react";
 import Auth from "../../Auth";
 import { Spinner } from "react-bootstrap";
 import "./Order.scss";
-export default function Order({ checkAuth, cart }) {
+export default function Order({ cart }) {
   const address = useRef();
   const telephone = useRef();
-  const [authstae, setauthstae] = useState(false);
   const order = {};
+  const [authState, setauthstate] = useState(false);
   const submitOrder = (e) => {
     e.preventDefault();
     order.address = address.current.value;
@@ -28,51 +28,53 @@ export default function Order({ checkAuth, cart }) {
       })
       .catch((e) => console.log(e));
   };
-  useEffect(async () => {
-    await Auth.checkAuth();
-    setauthstae(true);
+
+  useEffect(() => {
+    Auth.auth(setauthstate);
   }, []);
   return (
-    <div className="address-form">
-      {authstae ? (
-        <form
-          onSubmit={(e) => {
-            submitOrder(e);
-          }}
-        >
-          <input
-            ref={address}
-            type="text"
-            className="address-input"
-            name="address"
-            placeholder="Address"
-          />
-          <br />
-          <input
-            ref={telephone}
-            type="text"
-            className="telephone-input"
-            name="phone"
-            placeholder="Telephone"
-          />
-          <br />
-          <input
-            type="checkbox"
-            name="savetoaccount"
-            defaultValue="false"
-          ></input>
-          <button>paypal</button>
-          <button>stripe</button>
+    <>
+      {authState ? (
+        <div className="address-form">
+          <form
+            onSubmit={(e) => {
+              submitOrder(e);
+            }}
+          >
+            <input
+              ref={address}
+              type="text"
+              className="address-input"
+              name="address"
+              placeholder="Address"
+            />
+            <br />
+            <input
+              ref={telephone}
+              type="text"
+              className="telephone-input"
+              name="phone"
+              placeholder="Telephone"
+            />
+            <br />
+            <input
+              type="checkbox"
+              name="savetoaccount"
+              defaultValue="false"
+            ></input>
+            <button>paypal</button>
+            <button>stripe</button>
 
-          <button disabled type="submit">
-            submit
-          </button>
-        </form>
+            <button disabled type="submit">
+              submit
+            </button>
+          </form>
+        </div>
       ) : (
         <Spinner animation="border" role="status">
           <span className="sr-only">Loading...</span>
         </Spinner>
       )}
-    </div>
+    </>
   );
 }

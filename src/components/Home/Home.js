@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.scss";
 import Auth from "../../Auth";
 import { Spinner } from "react-bootstrap";
@@ -18,9 +18,8 @@ export default function Home() {
       })
       .catch((e) => console.log(e));
   };
-  useLayoutEffect(async () => {
-    await Auth.checkAuth();
-    setauthstate(true);
+  useEffect(() => {
+    Auth.auth(setauthstate);
     getOrders();
   }, []);
   return (

@@ -9,11 +9,9 @@ import Login from "../Login/Login";
 import Register from "../Register/Register";
 import "./Content.scss";
 import { useState, useEffect } from "react";
-import Auth from "../../Auth";
-export default function Content({ cart, setcart, auth }) {
+export default function Content({ cart, setcart }) {
   const url = "http://127.0.0.1:8000/api/products";
   const [items, setitems] = useState([]);
-  //const authstate = useRef(false)
 
   useEffect(() => {
     fetch(url)
@@ -51,7 +49,7 @@ export default function Content({ cart, setcart, auth }) {
                 <Route
                   path="/login"
                   exact
-                  render={() => <Login auth={auth}></Login>}
+                  render={() => <Login></Login>}
                 ></Route>
               </div>
 
