@@ -5,7 +5,7 @@ import Auth from "../../Auth";
 export default function Navbar({ auth }) {
   return (
     <header>
-      <div className="search-box">
+      <div className="search_box">
         <input
           type="text"
           placeholder="Search for products"
@@ -14,22 +14,22 @@ export default function Navbar({ auth }) {
 
         <img src="/img/SearchIcon.svg" alt="search icon"></img>
       </div>
-      <div className="cart-login">
+      <div className="cart_login">
         <button
-          className="cart-btn"
+          className="cart_btn"
           onClick={() => {
             Auth.logout();
           }}
         >
           <img
-            className="cart-icon"
+            className="cart_icon"
             src="/img/supermarketlight.svg"
             alt="Cart-icon"
           ></img>
         </button>
         {
           <button
-            className="login-btn"
+            className="login_btn"
             onClick={() => {
               Auth.login("dstanton@example.com", "password");
             }}

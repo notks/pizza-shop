@@ -6,7 +6,6 @@ class Auth {
   constructor() {
     this.checkAuth = async () => {
       if (localStorage.getItem("AuthState")) {
-        console.log("logedin");
         await fetch("http://127.0.0.1:8000/api/authenticated", {
           headers: {
             Authorization: localStorage.getItem("Authorization"),
@@ -14,10 +13,10 @@ class Auth {
         })
           .then((response) => response.json())
           .then((data) => {
-            console.log(data);
             this.authState = true;
           })
           .catch((e) => {
+            console.log(e);
             this.authState = false;
             document.location.href = loginPath;
           });

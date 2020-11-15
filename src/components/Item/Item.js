@@ -19,7 +19,7 @@ export default function Item({ cart, setcart, item }) {
     localStorage.setItem("cart", JSON.stringify(newCart));
   };
   return (
-    <div className="container">
+    <div className="item_card">
       <img src={item.image} alt="item"></img>
       <div>
         <div>
@@ -32,7 +32,8 @@ export default function Item({ cart, setcart, item }) {
             addToCart(item);
           }}
         >
-Add To Cart        </button>
+          Add To Cart{" "}
+        </button>
       </div>
     </div>
   );

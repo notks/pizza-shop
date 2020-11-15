@@ -13,7 +13,6 @@ export default function Home() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setorders(data);
       })
       .catch((e) => console.log(e));
@@ -32,7 +31,7 @@ export default function Home() {
               <th>What?</th>
               <th>When?</th>
               <th>Where?</th>
-              <th>How muck?</th>
+              <th>How much?</th>
             </tr>
           </thead>
           <tbody>
