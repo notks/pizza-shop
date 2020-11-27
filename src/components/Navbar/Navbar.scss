@@ -1,5 +1,5 @@
 @import "../../styles/variables";
-header {
+.nav_header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -8,8 +8,7 @@ header {
   .search_box {
     position: relative;
     display: flex;
-    width: 500px;
-
+    width: 40%;
     align-items: center;
     input {
       border-radius: 20px;
@@ -32,7 +31,7 @@ header {
   .cart_login {
     display: flex;
     justify-content: flex-end;
-    width: 500px;
+    width: 30%;
 
     align-items: center;
     .cart_btn {

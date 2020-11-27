@@ -1,6 +1,6 @@
-const APP_NAME = "http://127.0.0.1:3000";
-const loginPath = APP_NAME + "/login";
-const homePath = APP_NAME + "/home";
+import history from "./history";
+const loginPath = "/login";
+const homePath = "/home";
 
 class Auth {
   constructor() {
@@ -18,7 +18,8 @@ class Auth {
           .catch((e) => {
             console.log(e);
             this.authState = false;
-            document.location.href = loginPath;
+            //document.location.href = loginPath;
+            history.push("/login");
           });
       } else {
         document.location.href = loginPath;
@@ -27,7 +28,8 @@ class Auth {
     };
     this.login = async (email, password) => {
       if (this.authState) {
-        document.location.href = homePath;
+        // document.location.href = homePath;
+        history.push("home");
       }
       let msg = "";
       await fetch("http://127.0.0.1:8000/api/user/login", {
@@ -65,7 +67,8 @@ class Auth {
           localStorage.removeItem("Authorization");
           localStorage.removeItem("AuthState");
 
-          document.location.href = loginPath;
+          // document.location.href = loginPath;
+          history.push("/login");
         })
         .catch((e) => {
           console.log("You are unauthenticated!");

@@ -1,32 +1,103 @@
-.address-form{
-    width: 100%;
-    margin: 30px;
-    border-radius: 20px;
-    //border: 1px solid black;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-height: 500px;
-    form{
-        text-align: center;
+@import "../../styles/variables";
+
+.address-form {
+  width: 100%;
+  margin: 30px;
+  border-radius: 20px;
+  //border: 1px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .input_steps {
+    margin-top: 20px;
+    justify-content: space-evenly;
+    display: flex;
+    .step_1 {
+      width: 50px;
+      height: 50px;
+      //border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .step_2 {
+      width: 50px;
+      height: 50px;
+      // border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .active_step {
+      border-bottom: 2px solid $color2;
+    }
+  }
+  .input_fields {
+    position: relative;
+    width: 660px;
+    //background-color: green;
+    text-align: center;
     //display: flex;
     //flex-direction: column;
     //align-items: center;
     //justify-content: space-around;
     width: 100%;
-    input{
-        margin: 20px;
-        
+    .step_2_fields {
+      width: 660px;
+      height: 400px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      display: none;
+      .stripe_btn {
+        margin-bottom: 50px;
+        background-color: $color2;
+        width: 150px;
+      }
+      .paypal_btn {
+        margin-bottom: 50px;
+        width: 150px;
+        background-color: $color2;
+      }
     }
-    .name-input{
-width: 300px;
+
+    .step_1_fields {
+      height: 400px;
+      width: 660px;
+      // background-color: red;
     }
-    .surname-input{
-        width: 300px;
+    input {
+      margin: 20px;
     }
-    .address-input{
-        width: 660px;
+
+    .address-input {
+      width: 660px;
     }
-    .telephone-input{
-        width:300px;
+    .telephone-input {
+      width: 300px;
     }
-}
+    .back_btn {
+      position: absolute;
+      left: 30px;
+      bottom: 30px;
+      display: none;
+    }
+    .submit_btn {
+      background-color: $color2;
+      display: none;
+      position: absolute;
+      right: 30px;
+      bottom: 30px;
+    }
+    .next_btn {
+      position: absolute;
+      right: 30px;
+      bottom: 30px;
+      background-color: $color2;
+      border: none;
+    }
+  }
 }

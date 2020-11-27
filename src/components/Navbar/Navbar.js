@@ -2,9 +2,11 @@ import React from "react";
 import "./Navbar.scss";
 import Auth from "../../Auth";
 //const a = new Auth();
+import history from "../../history";
+
 export default function Navbar({ auth }) {
   return (
-    <header>
+    <header className="nav_header">
       <div className="search_box">
         <input
           type="text"
@@ -18,7 +20,8 @@ export default function Navbar({ auth }) {
         <button
           className="cart_btn"
           onClick={() => {
-            Auth.logout();
+            //Auth.logout();
+            history.push("/order");
           }}
         >
           <img
