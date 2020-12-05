@@ -9,6 +9,7 @@ export default function Order({ cart }) {
   const order = {};
   const [authState, setauthstate] = useState(false);
   const [modal, setmodal] = useState(false);
+  const [done, setdone] = useState(false);
   const submitOrder = (e) => {
     e.preventDefault();
     order.address = address.current.value;
@@ -108,14 +109,21 @@ export default function Order({ cart }) {
                 >
                   Paypal
                 </button>
-                <button className="stripe_btn btn btn-lg">Stripe</button>
-                {modal ? (
-                  <Payment
-                    close={() => {
-                      setmodal(false);
-                    }}
-                  ></Payment>
-                ) : null}
+                <button
+                  className="stripe_btn btn btn-lg"
+                  onClick={() => {
+                    setmodal(true);
+                  }}
+                >
+                  Stripe
+                </button>
+
+                <Payment
+                  modal={modal}
+                  done={done}
+                  setdone={setdone}
+                  setmodal={setmodal}
+                ></Payment>
               </div>
               <button
                 className="back_btn btn btn-secondary"
@@ -136,9 +144,11 @@ export default function Order({ cart }) {
                 Next
               </button>
               <button
+                disabled={!done}
                 className="submit_btn btn btn-primary"
                 onClick={(e) => {
                   submitOrder(e);
+                  console.log("a");
                 }}
               >
                 Finish
