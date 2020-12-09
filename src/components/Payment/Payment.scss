@@ -18,6 +18,12 @@
     right: 20px;
     top: 20px;
   }
+  .main_content {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 .overlay_div {
   position: fixed;

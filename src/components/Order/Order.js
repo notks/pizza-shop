@@ -4,10 +4,10 @@ import Auth from "../../Auth";
 import { Spinner } from "react-bootstrap";
 import "./Order.scss";
 export default function Order({ cart }) {
+  const [authState, setauthstate] = useState(false);
   const address = useRef();
   const telephone = useRef();
   const order = {};
-  const [authState, setauthstate] = useState(false);
   const [modal, setmodal] = useState(false);
   const [done, setdone] = useState(false);
   const submitOrder = (e) => {

@@ -66,9 +66,9 @@ class Auth {
           console.log("You are logged out!");
           localStorage.removeItem("Authorization");
           localStorage.removeItem("AuthState");
-
-          // document.location.href = loginPath;
+          //document.location.href = loginPath;
           history.push("/login");
+          document.location.reload();
         })
         .catch((e) => {
           console.log("You are unauthenticated!");
