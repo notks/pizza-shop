@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-
+import "./Register.scss";
 export default function Register() {
   const name = useRef();
   const email = useRef();
@@ -29,25 +29,44 @@ export default function Register() {
         .catch((e) => console.log(e));
       setmsg("req send pass ok!");
     } else {
-      setmsg("req not send pass not ok");
+      setmsg("Passwords dont match!");
     }
   };
   return (
-    <div>
+    <div className="register_container">
       <p>{msg}</p>
-
-      <input type="text" ref={name} placeholder="Name"></input>
-      <br />
-      <input type="text" ref={email} placeholder="Email"></input>
-      <br />
-      <input type="password" ref={password} placeholder="Password"></input>
-      <br />
-      <input
-        type="password"
-        ref={password2}
-        placeholder="Retype password"
-      ></input>
-      <button onClick={() => handleRegister()}>Sign up</button>
+      <div className="input_fields">
+        <input
+          className="form-control"
+          type="text"
+          ref={name}
+          placeholder="Name"
+        ></input>
+        <br />
+        <input
+          className="form-control"
+          type="text"
+          ref={email}
+          placeholder="Email"
+        ></input>
+        <br />
+        <input
+          className="form-control"
+          type="password"
+          ref={password}
+          placeholder="Password"
+        ></input>
+        <br />
+        <input
+          className="form-control"
+          type="password"
+          ref={password2}
+          placeholder="Retype password"
+        ></input>
+      </div>
+      <button className="btn btn-primary " onClick={() => handleRegister()}>
+        Sign up
+      </button>
     </div>
   );
 }
