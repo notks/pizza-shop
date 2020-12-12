@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Auth from "../../Auth";
-
+import "./Login.scss";
 export default function Login() {
   const [msg, setmsg] = useState("");
   const handleLogin = async () => {
@@ -12,7 +12,7 @@ export default function Login() {
     setmsg(res);
   };
   return (
-    <div>
+    <div className="login_container">
       <div id="failed-login">{msg}</div>
       <form
         onSubmit={(e) => {
@@ -21,16 +21,26 @@ export default function Login() {
           handleLogin();
         }}
       >
-        <input type="text" id="email-input" placeholder="email"></input>
         <input
+          className="form-control"
+          type="text"
+          id="email-input"
+          placeholder="email"
+        ></input>
+        <input
+          className="form-control"
           type="password"
           id="password-input"
           placeholder="password"
         ></input>
-        <button type="submit">Log In</button>
-        <Link to="register">
-          <button>Sign Up</button>
-        </Link>
+        <div className="login_buttons">
+          <button className="btn btn-primary login_btn" type="submit">
+            Log In
+          </button>
+          <Link to="register">
+            <button className="btn btn-secondary">Sign Up</button>
+          </Link>
+        </div>
       </form>
     </div>
   );
