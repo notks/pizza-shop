@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
-import "./Sidebar.scss";
 import CartItem from "../CartItem/CartItem";
 
 export default function Sidebar({ cart, setcart }) {
@@ -52,7 +51,7 @@ export default function Sidebar({ cart, setcart }) {
             className="clear"
             onClick={() => {
               setcart([]);
-              localStorage.removeItem('cart');
+              localStorage.removeItem("cart");
             }}
           >
             X

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import "./Navbar.scss";
+import { Link } from "react-router-dom";
 import Dropdown from "../Dropdown/Dropdown";
-//const a = new Auth();
-//import history from "../../history";
 
 export default function Navbar({ history }) {
   const [dropdown, setdropdown] = useState(false);
@@ -18,13 +16,9 @@ export default function Navbar({ history }) {
   return (
     <header className="nav_header">
       <div className="search_box">
-        <input
-          type="text"
-          placeholder="Search for products"
-          name="search"
-        ></input>
-
-        <img src="/img/SearchIcon.svg" alt="search icon"></img>
+        <Link to="/">
+          <img className="logo" src="/img/pizza_logo2.png" alt="logo-img"></img>
+        </Link>
       </div>
       <div className="cart_login">
         <button
@@ -56,7 +50,11 @@ export default function Navbar({ history }) {
         >
           {auth ? "Home" : "Login"}
         </button>
-        <Dropdown history={history} visible={dropdown}></Dropdown>
+        <Dropdown
+          history={history}
+          notinusejusttofixunusedvarwarning={setauth}
+          visible={dropdown}
+        ></Dropdown>
       </div>
     </header>
   );

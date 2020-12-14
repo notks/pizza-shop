@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDom from "react-dom";
-import "./Payment.scss";
 export default function Payment({ modal, setmodal, setdone, done, method }) {
   if (modal) {
     return ReactDom.createPortal(

@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import "./Register.scss";
 export default function Register() {
   const name = useRef();
   const email = useRef();
@@ -13,7 +12,7 @@ export default function Register() {
       password: password.current.value,
     };
     if (password.current.value === password2.current.value) {
-      fetch("http://127.0.0.1:8000/api/user/register", {
+      fetch("https://lsbv1.herokuapp.com/api/user/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -21,13 +20,12 @@ export default function Register() {
         .then((response) => response.json())
         .then((data) => {
           if (data.message === "Done!") {
-            document.location.href = "http://127.0.0.1:3000/login";
+            document.location.href = "/login";
           } else {
             setmsg(data.message);
           }
         })
         .catch((e) => console.log(e));
-      setmsg("req send pass ok!");
     } else {
       setmsg("Passwords dont match!");
     }
@@ -37,6 +35,7 @@ export default function Register() {
       <p>{msg}</p>
       <div className="input_fields">
         <input
+          required
           className="form-control"
           type="text"
           ref={name}
@@ -44,6 +43,7 @@ export default function Register() {
         ></input>
         <br />
         <input
+          required
           className="form-control"
           type="text"
           ref={email}
@@ -51,6 +51,7 @@ export default function Register() {
         ></input>
         <br />
         <input
+          required
           className="form-control"
           type="password"
           ref={password}
@@ -58,6 +59,7 @@ export default function Register() {
         ></input>
         <br />
         <input
+          required
           className="form-control"
           type="password"
           ref={password2}

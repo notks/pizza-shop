@@ -1,5 +1,4 @@
 import React from "react";
-import "./Item.scss";
 export default function Item({ cart, setcart, item }) {
   const addToCart = (item) => {
     const newCart = [...cart];

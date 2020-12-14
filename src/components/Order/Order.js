@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import Payment from "../Payment/Payment";
 import Auth from "../../Auth";
 import { Spinner } from "react-bootstrap";
-import "./Order.scss";
 export default function Order({ cart }) {
   const [authState, setauthstate] = useState(false);
   const address = useRef();
@@ -16,7 +15,7 @@ export default function Order({ cart }) {
     order.telephone = telephone.current.value;
     order.cart = cart;
     console.log(order);
-    fetch("http://127.0.0.1:8000/api/user/orders", {
+    fetch("https://lsbv1.herokuapp.com/api/user/orders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,8 +25,7 @@ export default function Order({ cart }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("res data");
-        console.log(data);
+        document.location.href = "/home";
       })
       .catch((e) => console.log(e));
   };
@@ -103,7 +101,8 @@ export default function Order({ cart }) {
               <div className="step_2_fields">
                 <button
                   className="paypal_btn btn btn-lg"
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
                     setmodal(true);
                   }}
                 >
@@ -111,7 +110,8 @@ export default function Order({ cart }) {
                 </button>
                 <button
                   className="stripe_btn btn btn-lg"
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
                     setmodal(true);
                   }}
                 >

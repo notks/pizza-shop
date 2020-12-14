@@ -1,0 +1,41 @@
+@include mediaSm {
+  .register_container {
+    max-width: 70vw;
+    margin: auto;
+    .input_fields {
+      max-width: 70vw;
+    }
+  }
+  .sidebar {
+    order: 1;
+
+    margin: 10px auto;
+  }
+  .main {
+    order: 2;
+  }
+  .content {
+    flex-wrap: wrap;
+  }
+  .item_card {
+    margin: 10px auto;
+  }
+  .address-form {
+    margin: 10px auto;
+    max-width: 90vw;
+    .input_fields {
+      max-width: 70vw;
+      .step_1_fields {
+        max-width: 70vw;
+        input {
+          max-width: 50vw;
+        }
+      }
+      .step_2_fields {
+        max-width: 70vw;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+}

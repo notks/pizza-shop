@@ -6,7 +6,6 @@ import Order from "../Order/Order";
 import Home from "../Home/Home";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
-import "./Content.scss";
 export default function Content({ cart, setcart }) {
   return (
     <>

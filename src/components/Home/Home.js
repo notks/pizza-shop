@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import "./Home.scss";
 import Auth from "../../Auth";
 import { Spinner } from "react-bootstrap";
 export default function Home() {
   const [orders, setorders] = useState([]);
   const [authstate, setauthstate] = useState(false);
   const getOrders = () => {
-    fetch("http://127.0.0.1:8000/api/user/orders", {
+    fetch("https://lsbv1.herokuapp.com/api/user/orders", {
       headers: {
         Authorization: localStorage.getItem("Authorization"),
       },
@@ -44,7 +43,7 @@ export default function Home() {
                   <td>{order.name}</td>
                   <td>{order.created_at}</td>
                   <td>{order.address}</td>
-                  <td>{order.price}</td>
+                  <td>{order.price}$</td>
                 </tr>
               );
             })}

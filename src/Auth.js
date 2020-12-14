@@ -6,7 +6,7 @@ class Auth {
   constructor() {
     this.checkAuth = async () => {
       if (localStorage.getItem("AuthState")) {
-        await fetch("http://127.0.0.1:8000/api/authenticated", {
+        await fetch("https://lsbv1.herokuapp.com/api/authenticated", {
           headers: {
             Authorization: localStorage.getItem("Authorization"),
           },
@@ -32,7 +32,7 @@ class Auth {
         history.push("home");
       }
       let msg = "";
-      await fetch("http://127.0.0.1:8000/api/user/login", {
+      await fetch("https://lsbv1.herokuapp.com/api/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -56,7 +56,7 @@ class Auth {
       return msg;
     };
     this.logout = () => {
-      fetch("http://127.0.0.1:8000/api/user/logout", {
+      fetch("https://lsbv1.herokuapp.com/api/user/logout", {
         method: "DELETE",
         headers: {
           Authorization: localStorage.getItem("Authorization"),

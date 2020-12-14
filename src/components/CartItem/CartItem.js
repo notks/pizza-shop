@@ -1,5 +1,4 @@
 import React from "react";
-import "./CartItem.scss";
 export default function CartItem({ item, setcart, cart }) {
   const handleQuantitychange = (event, item) => {
     const newCart = [...cart];

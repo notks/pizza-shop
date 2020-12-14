@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Auth from "../../Auth";
-import "./Login.scss";
 export default function Login() {
   const [msg, setmsg] = useState("");
   const handleLogin = async () => {
-    // let msgDiv = document.getElementById("failed-login");
     let email = document.getElementById("email-input").value;
     let password = document.getElementById("password-input").value;
     let res = await Auth.login(email, password);

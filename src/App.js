@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Router } from "react-router-dom";
-
-import "./App.scss";
+import "./styles/main.scss";
+//import "./App.scss";
 import Navbar from "./components/Navbar/Navbar";
 import Content from "./components/Content/Content";
 import createHistory from "history/createBrowserHistory";

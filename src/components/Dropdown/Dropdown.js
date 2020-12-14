@@ -1,5 +1,4 @@
 import React from "react";
-import "./Dropdown.scss";
 import Auth from "../../Auth";
 export default function Dropdown({ history, visible }) {
   if (visible) {
