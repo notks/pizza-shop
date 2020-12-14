@@ -38,7 +38,7 @@ export default function Home() {
               return (
                 <tr key={order.id}>
                   <td>
-                    <img src={order.image} alt="product"></img>
+                    <img src={"/pizza-shop" + order.image} alt="product"></img>
                   </td>
                   <td>{order.name}</td>
                   <td>{order.created_at}</td>

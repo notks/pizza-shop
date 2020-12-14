@@ -29,7 +29,11 @@ export default function CartItem({ item, setcart, cart }) {
   };
   return (
     <div className="cart-component">
-      <img src={item.image} alt="product" className="cart-product-image"></img>
+      <img
+        src={"/pizza-shop" + item.image}
+        alt="product"
+        className="cart-product-image"
+      ></img>
       <p>{item.name} </p>
       <input
         type="number"

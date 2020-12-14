@@ -22,7 +22,7 @@ export default function Sidebar({ cart, setcart }) {
     <div className="sidebar">
       <div className="cart">
         <img
-          src="/img/supermarketlight.svg"
+          src="/pizza-shop/img/supermarketlight.svg"
           className="shopping-cart-sidebar"
           alt="shopping-cart"
         ></img>

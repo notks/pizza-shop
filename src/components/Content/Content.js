@@ -6,7 +6,7 @@ import Order from "../Order/Order";
 import Home from "../Home/Home";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
-export default function Content({ cart, setcart }) {
+export default function Content({ history, cart, setcart }) {
   return (
     <>
       <Switch>
@@ -29,7 +29,11 @@ export default function Content({ cart, setcart }) {
                 render={() => <Register></Register>}
               ></Route>
               <Route path="/home" exact render={() => <Home></Home>}></Route>
-              <Route path="/login" exact render={() => <Login></Login>}></Route>
+              <Route
+                path="/login"
+                exact
+                render={() => <Login history={history}></Login>}
+              ></Route>
             </div>
 
             <Sidebar setcart={setcart} cart={cart}></Sidebar>

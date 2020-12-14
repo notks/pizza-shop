@@ -1,22 +1,23 @@
 import React, { useState } from "react";
-import { Router } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import "./styles/main.scss";
 //import "./App.scss";
 import Navbar from "./components/Navbar/Navbar";
 import Content from "./components/Content/Content";
-import createHistory from "history/createBrowserHistory";
+//import createHistory from "history/createBrowserHistory";
+import { createHashHistory } from "history";
 
-const history = createHistory();
+const history = createHashHistory();
 function App() {
   const cartFromStorage = JSON.parse(localStorage.getItem("cart"));
   const [cart, setcart] = useState(cartFromStorage ? cartFromStorage : []);
 
   return (
     <div className="wrapper">
-      <Router history={history}>
+      <HashRouter history={history} basename="/">
         <Navbar history={history}></Navbar>
-        <Content cart={cart} setcart={setcart}></Content>
-      </Router>
+        <Content cart={cart} history={history} setcart={setcart}></Content>
+      </HashRouter>
     </div>
   );
 }

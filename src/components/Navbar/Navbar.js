@@ -17,7 +17,11 @@ export default function Navbar({ history }) {
     <header className="nav_header">
       <div className="search_box">
         <Link to="/">
-          <img className="logo" src="/img/pizza_logo2.png" alt="logo-img"></img>
+          <img
+            className="logo"
+            src="/pizza-shop/img/pizza_logo2.png"
+            alt="logo-img"
+          ></img>
         </Link>
       </div>
       <div className="cart_login">
@@ -29,7 +33,7 @@ export default function Navbar({ history }) {
         >
           <img
             className="cart_icon"
-            src="/img/supermarketlight.svg"
+            src="/pizza-shop/img/supermarketlight.svg"
             alt="Cart-icon"
           ></img>
         </button>

@@ -20,7 +20,7 @@ export default function Register() {
         .then((response) => response.json())
         .then((data) => {
           if (data.message === "Done!") {
-            document.location.href = "/login";
+            document.location.href = "/pizza-shop/login";
           } else {
             setmsg(data.message);
           }

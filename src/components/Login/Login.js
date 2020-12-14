@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Auth from "../../Auth";
-export default function Login() {
+export default function Login({ history }) {
   const [msg, setmsg] = useState("");
   const handleLogin = async () => {
     let email = document.getElementById("email-input").value;
@@ -9,6 +9,11 @@ export default function Login() {
     let res = await Auth.login(email, password);
     setmsg(res);
   };
+  useEffect(() => {
+    if (localStorage.getItem("AuthState")) {
+      history.push("/home");
+    }
+  }, []);
   return (
     <div className="login_container">
       <div id="failed-login">{msg}</div>
@@ -35,7 +40,7 @@ export default function Login() {
           <button className="btn btn-primary login_btn" type="submit">
             Log In
           </button>
-          <Link to="register">
+          <Link to="/register">
             <button className="btn btn-secondary">Sign Up</button>
           </Link>
         </div>

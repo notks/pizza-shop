@@ -19,7 +19,7 @@ export default function Item({ cart, setcart, item }) {
   };
   return (
     <div className="item_card">
-      <img src={item.image} alt="item"></img>
+      <img src={"/pizza-shop" + item.image} alt="item"></img>
       <div>
         <div>
           <p>{item.ingreadiants}</p>

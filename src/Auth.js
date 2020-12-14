@@ -18,18 +18,17 @@ class Auth {
           .catch((e) => {
             console.log(e);
             this.authState = false;
-            //document.location.href = loginPath;
-            history.push("/login");
+            history.push(loginPath);
           });
       } else {
-        document.location.href = loginPath;
+        history.push(loginPath);
       }
       return this.authState;
     };
     this.login = async (email, password) => {
       if (this.authState) {
         // document.location.href = homePath;
-        history.push("home");
+        history.push("/home");
       }
       let msg = "";
       await fetch("https://lsbv1.herokuapp.com/api/user/login", {
@@ -49,7 +48,7 @@ class Auth {
           } else {
             localStorage.setItem("Authorization", `Bearer ${data.token}`);
             localStorage.setItem("AuthState", true);
-            return (document.location.href = homePath);
+            return history.push(homePath);
           }
         })
         .catch((e) => console.log(e));
