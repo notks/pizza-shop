@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Payment from "../Payment/Payment";
 import Auth from "../../Auth";
 import { Spinner } from "react-bootstrap";
-export default function Order({ cart }) {
+export default function Order({ cart, history }) {
   const [authState, setauthstate] = useState(false);
   const address = useRef();
   const telephone = useRef();
@@ -25,7 +25,7 @@ export default function Order({ cart }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        document.location.href = "/home";
+        history.push("/home");
       })
       .catch((e) => console.log(e));
   };

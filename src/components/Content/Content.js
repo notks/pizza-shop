@@ -21,7 +21,7 @@ export default function Content({ history, cart, setcart }) {
               <Route
                 path="/order"
                 exact
-                render={() => <Order cart={cart}></Order>}
+                render={() => <Order history={history} cart={cart}></Order>}
               ></Route>
               <Route
                 path="/register"
