@@ -9,6 +9,43 @@ export default function Order({ cart, history }) {
   const order = {};
   const [modal, setmodal] = useState(false);
   const [done, setdone] = useState(false);
+  const notifyMe = () => {
+    if (!window.Notification) {
+      alert("Browser does not support notifications.");
+    } else {
+      // check if permission is already granted
+      if (Notification.permission === "granted") {
+        // show notification here
+        var options = {
+          body: "Your order has been added to your history!",
+          icon: "img/pizza_logo2.png",
+          vibrate: [100, 100, 100],
+          timeout: 2000,
+        };
+        new Notification("Your order has been added!", options);
+      } else {
+        // request permission from user
+        Notification.requestPermission()
+          .then(function (p) {
+            if (p === "granted") {
+              // show notification here
+              var options = {
+                body: "Your order has been added to your history!",
+                icon: "img/pizza_logo2.png",
+                vibrate: [100, 100, 100],
+                timeout: 2000,
+              };
+              new Notification("Your order has been added!", options);
+            } else {
+              console.log("User blocked notifications.");
+            }
+          })
+          .catch(function (err) {
+            console.error(err);
+          });
+      }
+    }
+  };
   const submitOrder = (e) => {
     e.preventDefault();
     order.address = address.current.value;
@@ -25,6 +62,7 @@ export default function Order({ cart, history }) {
     })
       .then((response) => response.json())
       .then((data) => {
+        notifyMe();
         history.push("/home");
       })
       .catch((e) => console.log(e));

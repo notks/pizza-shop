@@ -11,11 +11,11 @@ const history = createHashHistory();
 function App() {
   const cartFromStorage = JSON.parse(localStorage.getItem("cart"));
   const [cart, setcart] = useState(cartFromStorage ? cartFromStorage : []);
-
   return (
     <div className="wrapper">
       <HashRouter history={history} basename="/">
         <Navbar history={history}></Navbar>
+
         <Content cart={cart} history={history} setcart={setcart}></Content>
       </HashRouter>
     </div>

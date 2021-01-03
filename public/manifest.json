@@ -7,7 +7,7 @@
 	"theme_color": "#000000",
 	"dir": "ltr",
 	"display": "standalone",
-	"orientation": "any",
+	"orientation": "portrait-primary",
 	"icons": [
 		{
 			"src": "/pizza-shop/android-icon-192x192-dunplab-manifest-31425.png",
